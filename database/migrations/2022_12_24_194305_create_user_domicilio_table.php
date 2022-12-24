@@ -15,7 +15,7 @@ class CreateUserDomicilioTable extends Migration
     {
         Schema::create('user_domicilio', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->string('domicilio',255);
             $table->string('numero_ext',20);
             $table->string('colonia',255);
