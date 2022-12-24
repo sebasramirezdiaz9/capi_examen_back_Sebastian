@@ -8,10 +8,10 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::query()->with('address')->get();
+        $users = User::query()->get();
 
         $users = $users->map(function($q){
-            $q->append('age');
+            $q->append('age','address_format');
             return $q;
         });
 
