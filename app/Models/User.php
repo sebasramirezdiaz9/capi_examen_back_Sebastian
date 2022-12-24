@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -45,5 +46,9 @@ class User extends Authenticatable
     public function address()
     {
         return $this->hasOne(UserAddress::class);
+    }
+
+    public function getAgeAttribute(){
+        return Carbon::parse($this->birthdate)->age;
     }
 }
